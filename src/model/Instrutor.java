@@ -84,6 +84,6 @@ public class Instrutor extends Funcionario implements Pagavel {
     public String toString(){
         int qntAlunos = alunos.size();
 
-        return "Nome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nSalário: " + calculaSalario() + "\nQuantidades de alunos: " + qntAlunos;
+        return "\nNumero matricula: " + getNumMatricula() + "\nNome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nSalário: " + calculaSalario() + "\nQuantidades de alunos: " + qntAlunos;
     }
 }

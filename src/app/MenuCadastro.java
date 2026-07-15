@@ -36,7 +36,7 @@ public class MenuCadastro {
                     Academia.matriculaAluno(aluno);
                 } else {
                     if(Academia.listaInstrutores()){
-                        System.out.println("Digite o numero do instrutor: ");
+                        System.out.println("Digite o numero da matricula do instrutor desejado: ");
                         var aux = sc.nextInt();
                         sc.nextLine();
                         Academia.matriculaAluno(aluno);
