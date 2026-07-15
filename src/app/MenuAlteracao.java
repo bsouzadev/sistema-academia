@@ -1,5 +1,6 @@
 package app;
 
+import enums.StatusMatricula;
 import model.Academia;
 
 import java.util.Scanner;

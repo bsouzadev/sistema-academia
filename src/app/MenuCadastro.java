@@ -47,7 +47,6 @@ public class MenuCadastro {
                     }
                 }
 
-
             } else if(op == 2){
                 System.out.println("Digite o nome do instrutor: ");
                 String nomeInstrutor = sc.nextLine();

@@ -1,5 +1,7 @@
 package model;
 
+import enums.StatusMatricula;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,6 +13,7 @@ public class Academia {
     //
     public static void matriculaAluno(Aluno aluno){
         alunosMatriculados.add(aluno);
+        statusDaMatriculaAluno(aluno.getNumeroMatricula(), StatusMatricula.ATIVO);
         System.out.println("Aluno " + aluno.getNome() + " matriculado!");
     }
 
@@ -30,7 +33,7 @@ public class Academia {
         }
 
         for (int i =0; i < alunosMatriculados.size(); i++){
-            System.out.println(i+1 + " " + alunosMatriculados.get(i).getNome());
+            System.out.println(alunosMatriculados.get(i).getNumeroMatricula() + " " + alunosMatriculados.get(i).getNome());
         }
 
         numeroTotalDeAlunos();
@@ -59,6 +62,20 @@ public class Academia {
 
         System.out.println("Aluno removido da academia!");
         alunosMatriculados.remove(aluno1);
+
+        statusDaMatriculaAluno(matricula, StatusMatricula.INATIVO);
+    }
+
+    public static void statusDaMatriculaAluno(int matricula, StatusMatricula statusMatricula){
+        if(statusMatricula == StatusMatricula.ATIVO){
+            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
+
+        } else if(statusMatricula == StatusMatricula.SUSPENSO){
+            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
+
+        } else{
+            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
+        }
     }
 
     //
