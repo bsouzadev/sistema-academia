@@ -1,15 +1,18 @@
 package model;
 
+import interfaces.Pagavel;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Instrutor extends Funcionario {
+public class Instrutor extends Funcionario implements Pagavel {
     private List<Aluno> alunos = new ArrayList<Aluno>();
     private static int cont;
     private int numMatricula;
+    private final double SALARIO = 2500;
 
-    public Instrutor(String nome, String cpf, int idade, double salario){
-        super(nome, cpf, idade, salario);
+    public Instrutor(String nome, String cpf, int idade){
+        super(nome, cpf, idade);
         cont ++;
         numMatricula = cont;
     }
@@ -55,8 +58,13 @@ public class Instrutor extends Funcionario {
         Aluno aluno = this.buscaAluno(matricula);
 
         if(aluno != null){
-            alunos.remove(matricula);
+            alunos.remove(aluno);
         }
+    }
+
+    @Override
+    public double calculaSalario() {
+        return (SALARIO + (getAlunos().size() * 50));
     }
 
     //
@@ -76,6 +84,6 @@ public class Instrutor extends Funcionario {
     public String toString(){
         int qntAlunos = alunos.size();
 
-        return "Nome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nSalário: " + getSalario() + "\nQuantidades de alunos: " + qntAlunos;
+        return "Nome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nSalário: " + calculaSalario() + "\nQuantidades de alunos: " + qntAlunos;
     }
 }

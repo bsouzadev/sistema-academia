@@ -8,7 +8,6 @@ import model.Recepcionista;
 import java.util.Scanner;
 
 public class MenuCadastro {
-    private Academia academia = new Academia();
     private Scanner sc = new Scanner(System.in);
 
     public void menuCadastro(){
@@ -41,7 +40,9 @@ public class MenuCadastro {
                         var aux = sc.nextInt();
                         sc.nextLine();
                         Academia.matriculaAluno(aluno);
-                        aluno.setInstrutor(academia.getInstrutor(aux));
+                        aluno.setInstrutor(Academia.getInstrutor(aux));
+                        Instrutor instrutor = aluno.getInstrutor();
+                        instrutor.adicionaAluno(aluno);
                     } else {
                         Academia.matriculaAluno(aluno);
                     }
@@ -54,9 +55,8 @@ public class MenuCadastro {
                 String cpfInstrutor = sc.nextLine();
                 System.out.println("Digite a sua Idade: ");
                 int idadeInstrutor = sc.nextInt();
-                System.out.println("Digite o seu Salario: ");
-                double salarioInstrutor = sc.nextDouble();
-                Instrutor instrutor = new Instrutor(nomeInstrutor, cpfInstrutor, idadeInstrutor, salarioInstrutor);
+                sc.nextLine();
+                Instrutor instrutor = new Instrutor(nomeInstrutor, cpfInstrutor, idadeInstrutor);
                 Academia.matriculaInstrutor(instrutor);
 
             } else if (op == 3) {
@@ -66,14 +66,14 @@ public class MenuCadastro {
                 String cpfRecepcionista = sc.nextLine();
                 System.out.println("Digite a sua Idade: ");
                 int idadeRecepcionista = sc.nextInt();
-                System.out.println("Digite o seu Salario: ");
-                double salarioRecepcionista = sc.nextDouble();
-                Recepcionista recepcionista = new Recepcionista(nomeRecepcionista, cpfRecepcionista, idadeRecepcionista, salarioRecepcionista);
+                sc.nextLine();
+                Recepcionista recepcionista = new Recepcionista(nomeRecepcionista, cpfRecepcionista, idadeRecepcionista);
                 Academia.matriculaRecepcionista(recepcionista);
 
-            } else {
-                sc.close();
+            } else if(op == 0) {
                 return;
+            } else{
+                System.out.println("Opção inválida! Tente novamente.");
             }
         }
     }

@@ -37,9 +37,10 @@ public class MenuAlteracao {
                 var aux = sc.nextInt();
                 sc.nextLine();
                 Academia.removeRecepcionista(aux);
-            } else {
-                sc.close();
+            } else if(op == 0){
                 return;
+            } else {
+                System.out.println("Opção inválida! Tente novamente.");
             }
         }
     }

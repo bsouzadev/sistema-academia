@@ -17,13 +17,13 @@ public class Academia {
         System.out.println("Aluno " + aluno.getNome() + " matriculado!");
     }
 
-    public static void numeroTotalDeAlunos(){
+    public static int numeroTotalDeAlunos(){
         if(alunosMatriculados == null || alunosMatriculados.isEmpty()){
             System.out.println("\nA academia não possui Alunos cadastrados!");
-            return;
+            return 0;
         }
 
-        System.out.println("\nTotal de Alunos matriculados: " + alunosMatriculados.size());
+        return alunosMatriculados.size();
     }
 
     public static void listaAlunos(){
@@ -32,14 +32,15 @@ public class Academia {
             return;
         }
 
-        for (int i =0; i < alunosMatriculados.size(); i++){
-            System.out.println(alunosMatriculados.get(i).getNumeroMatricula() + " " + alunosMatriculados.get(i).getNome());
+        for(int i =0; i < alunosMatriculados.size(); i++){
+            System.out.println(alunosMatriculados.get(i));
+            System.out.println("------");
         }
 
-        numeroTotalDeAlunos();
+        System.out.println("\nTotal de alunos matriculados: " + numeroTotalDeAlunos() + "\n");
     }
 
-    public static Aluno verificaAlunoMatriculado (int matricula){ //procurar um aluno
+    public static Aluno verificaAlunoMatriculado (int matricula){
         if(alunosMatriculados == null || alunosMatriculados.isEmpty()){
             System.out.println("Aluno não encontrado!");
             return null;
@@ -60,21 +61,24 @@ public class Academia {
 
         if (aluno1 == null) return;
 
-        System.out.println("Aluno removido da academia!");
-        alunosMatriculados.remove(aluno1);
+        Instrutor instrutorDoAluno = aluno1.getInstrutor();
+
+        if (instrutorDoAluno != null) {
+            instrutorDoAluno.removeAluno(matricula);
+        }
 
         statusDaMatriculaAluno(matricula, StatusMatricula.INATIVO);
+        alunosMatriculados.remove(aluno1);
+
+        System.out.println("Aluno removido da academia!");
     }
 
     public static void statusDaMatriculaAluno(int matricula, StatusMatricula statusMatricula){
-        if(statusMatricula == StatusMatricula.ATIVO){
-            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
-
-        } else if(statusMatricula == StatusMatricula.SUSPENSO){
-            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
-
-        } else{
-            alunosMatriculados.get(matricula).setStatusMatricula(statusMatricula);
+        for(int i = 0; i < alunosMatriculados.size(); i++){
+            if(alunosMatriculados.get(i).getNumeroMatricula() == matricula){
+                alunosMatriculados.get(i).setStatusMatricula(statusMatricula);
+                return;
+            }
         }
     }
 
@@ -85,7 +89,7 @@ public class Academia {
             return;
         }
 
-        System.out.println("\nTotal de Instrutores matriculados: " + instrutoresMatriculados.size());
+        System.out.println("\nTotal de Instrutores matriculados: " + instrutoresMatriculados.size() + "\n");
     }
 
     public static void matriculaInstrutor(Instrutor instrutor){
@@ -101,7 +105,8 @@ public class Academia {
 
         System.out.println("Instrutores disponíveis: ");
         for (int i =0; i < instrutoresMatriculados.size(); i++){
-            System.out.println(instrutoresMatriculados.get(i).getNumMatricula() + " " + instrutoresMatriculados.get(i).getNome());
+            System.out.println(instrutoresMatriculados.get(i));
+            System.out.println("------");
         }
 
         numeroTotalDeInstrutores();
@@ -133,7 +138,7 @@ public class Academia {
         return null;
     }
 
-    public Instrutor getInstrutor(int matricula){
+    public static Instrutor getInstrutor(int matricula){
         for (int i =0; i< instrutoresMatriculados.size(); i++){
             if (instrutoresMatriculados.get(i).getNumMatricula() == matricula){
                 return instrutoresMatriculados.get(i);
@@ -150,7 +155,7 @@ public class Academia {
             return;
         }
 
-        System.out.println("\nTotal de Recepcionistas matriculados: " + recepcionistasMatriculados.size());
+        System.out.println("\nTotal de Recepcionistas matriculados: " + recepcionistasMatriculados.size() + "\n");
     }
 
     public static void matriculaRecepcionista(Recepcionista recepcionista){
@@ -165,7 +170,8 @@ public class Academia {
         }
 
         for (int i =0; i < recepcionistasMatriculados.size(); i++){
-            System.out.println(i+1 + " " + recepcionistasMatriculados.get(i).getNome());
+            System.out.println(recepcionistasMatriculados.get(i));
+            System.out.println("------");
         }
 
         numeroTotalDeRecepcionistas();

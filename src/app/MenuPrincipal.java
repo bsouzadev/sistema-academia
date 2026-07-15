@@ -26,8 +26,7 @@ public class MenuPrincipal {
                 MenuRelatorio menuRelatorio = new MenuRelatorio();
                 menuRelatorio.menuRelatorio();
             } else {
-                sc.close();
-                break;
+                return;
             }
         }
     }

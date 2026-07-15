@@ -24,9 +24,10 @@ public class MenuRelatorio {
                 Academia.listaInstrutores();
             } else if (op == 3) {
                 Academia.listaRecepcionistas();
-            } else {
-                sc.close();
+            } else if (op == 0){
                 return;
+            } else {
+                System.out.println("Opção inválida! Tente novamente.");
             }
         }
     }

@@ -36,7 +36,9 @@ public class Aluno extends Pessoa {
     }
 
     //
-    public String toString() { //colocar o status da matrícula do aluno aqui, e arrumar se ele não tiver instrutor...
-        return "Nome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nInstrutor: " + getInstrutor().getNome();
+    public String toString() {
+        String nomeInstrutor = (instrutor != null) ? instrutor.getNome() : "Sem instrutor";
+
+        return "Nome: " + getNome() + "\nIdade: " + getIdade() + "\nCpf: " + getCpf() + "\nInstrutor: " + nomeInstrutor + "\nNumero matricula: " + getNumeroMatricula() + "\nStatus da Matricula: " + getStatusMatricula();
     }
 }
