@@ -61,3 +61,4 @@ O principal objetivo deste projeto foi consolidar conhecimentos em Java e Progra
 
 ## Demonstração
 
+![Demonstração do sistema](assets/demo.gif)
